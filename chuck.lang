@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Author: Christopher Pramerdorfer
+ 
+ This library is free software; you can redistribute it and/or
+ modify it under the terms of the GNU Library General Public
+ License as published by the Free Software Foundation; either
+ version 2 of the License, or (at your option) any later version.
+
+ This library is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ Library General Public License for more details.
+-->
+<language id="chuck" _name="ChucK" version="2.0" _section="Sources">
+    <metadata>
+      <property name="globs">*.ck</property>
+      <property name="line-comment-start">//</property>
+      <property name="block-comment-start">/*</property>
+      <property name="block-comment-end">*/</property>
+    </metadata>
+
+    <styles>
+      <style id="keyword" _name="Keyword" map-to="def:keyword"/>
+      <style id="data-type" _name="Data Type" map-to="def:type"/>
+      <style id="time" _name="Time" map-to="def:identifier"/>
+      <style id="operator" _name="Operator" map-to="def:operator"/>
+      <style id="string" _name="String" map-to="def:string"/>
+    </styles>
+
+    <definitions>
+      <context id="chuck">
+      <include>
+        <context ref="def:decimal"/>
+        <context ref="def:float"/>
+        <context ref="c:comment"/> 
+        <context ref="c:comment-multiline"/>
+        <context ref="c:hexadecimal"/> 	
+
+        <context id="chuck-operators" style-ref="operator" extend-parent="false">
+          <match>[~$@]|[/\+\-\*@!%]?=&gt;|=&lt;</match>
+        </context>
+
+        <context id="chuck-string" style-ref="string">
+          <match>".*"</match>
+        </context>
+
+        <context id="chuck-debug" style-ref="string">
+          <match>&lt;{3}.+&gt;{3}</match>
+        </context>	
+
+        <context id="chuck-keywords" style-ref="keyword">
+          <keyword>if</keyword>
+          <keyword>else</keyword>
+          <keyword>true</keyword>
+          <keyword>false</keyword>
+          <keyword>while</keyword>
+          <keyword>do</keyword>
+          <keyword>until</keyword>
+          <keyword>repeat</keyword>
+          <keyword>for</keyword>
+          <keyword>continue</keyword>
+          <keyword>break</keyword>
+          <keyword>class</keyword>
+          <keyword>extends</keyword>
+          <keyword>return</keyword>
+          <keyword>public</keyword>
+          <keyword>protected</keyword>
+          <keyword>private</keyword>
+          <keyword>static</keyword>
+          <keyword>pure</keyword>
+          <keyword>this</keyword>
+          <keyword>fun</keyword>
+          <keyword>spork</keyword>
+          <keyword>me</keyword>
+          <keyword>maybe</keyword>
+          <keyword>null</keyword>
+          <keyword>NULL</keyword>
+          <keyword>pi</keyword>
+        </context>
+
+        <context id="chuck-time" style-ref="time">
+          <keyword>::samp</keyword>
+          <keyword>::ms</keyword>
+          <keyword>::second</keyword>
+          <keyword>::minute</keyword>
+          <keyword>::hour</keyword>
+          <keyword>::day</keyword>
+          <keyword>::week</keyword>
+          <keyword>now</keyword>
+        </context>
+
+        <context id="chuck-types" style-ref="data-type">
+          <keyword>int</keyword>
+          <keyword>float</keyword>
+          <keyword>time</keyword>
+          <keyword>dur</keyword>
+          <keyword>void</keyword>
+          <keyword>complex</keyword>
+          <keyword>polar</keyword>
+        </context>
+
+        <context id="chuck-classes" style-ref="data-type">
+          <keyword>Object</keyword>
+          <keyword>Event</keyword>
+          <keyword>Std</keyword>
+          <keyword>Machine</keyword>
+          <keyword>Math</keyword>
+          <keyword>Shred</keyword>
+	</context>
+
+        <context id="chuck-io" style-ref="data-type">
+          <keyword>adc</keyword>
+          <keyword>dac</keyword>
+          <keyword>blackhole</keyword>
+          <keyword>Gain</keyword>
+          <keyword>SndBuf</keyword>
+        </context>
+
+        <context id="chuck-waveforms" style-ref="data-type">
+          <keyword>Noise</keyword>
+          <keyword>Impulse</keyword>
+          <keyword>Step</keyword>
+	</context>
+
+        <context id="chuck-oscillators" style-ref="data-type">
+          <keyword>Phasor</keyword>
+          <keyword>SinOsc</keyword>
+          <keyword>PulseOsc</keyword>
+          <keyword>SqrOsc</keyword>
+          <keyword>TriOsc</keyword>
+          <keyword>SawOsc</keyword>
+          <keyword>Gen5</keyword>
+          <keyword>Gen7</keyword>
+          <keyword>Gen9</keyword>
+          <keyword>Gen10</keyword>
+          <keyword>Gen17</keyword>
+          <keyword>CurveTable</keyword>
+          <keyword>WarpTable</keyword>
+        </context>
+
+        <context id="chuck-filters" style-ref="data-type">
+          <keyword>BiQuad</keyword>
+          <keyword>OneZero</keyword>
+          <keyword>TwoZero</keyword>
+          <keyword>OnePole</keyword>
+          <keyword>TwoPole</keyword>
+          <keyword>Filter</keyword>
+          <keyword>LPF</keyword>
+          <keyword>HPF</keyword>
+          <keyword>BPF</keyword>
+          <keyword>BRF</keyword>
+          <keyword>ResonZ</keyword>
+          <keyword>Dynamics</keyword>
+        </context>
+
+        <context id="chuck-dsp" style-ref="data-type">
+          <keyword>HalfRect</keyword>
+          <keyword>FullRect</keyword>
+          <keyword>ZeroX</keyword>
+        </context>
+
+        <context id="chuck-monostereo" style-ref="data-type">
+          <keyword>Mix2</keyword>
+          <keyword>Pan2</keyword>
+        </context>
+        </include>
+      </context>
+    </definitions>
+</language>
+
